@@ -8,9 +8,24 @@ a progress bar in the terminal itself.
 
 -----------------
 
-With the following command it does resize all images (images folder) by 50% and store them in the "resized" directory
+Currently there are two different ways to resize the images:
+- By a percent value
+- By a given dimension
+
+
+As example resize all images to 50%:
 
 	ruby resize.rb -p 50	
+	
+Or if you want to resize by dimensions. It fits either on the width or on the height to the given pixel dimension. (Example: 500x500px):
+	
+	ruby resize.rb -d 500x500
+
+Input or output directory can be changed with the following argument:
+
+	ruby resize.rb -i new_images_dir -o new_output_dir -p 50
+	
+
 -----------------
 
 [![](	http://www.prine.ch/img/RubyResizeImages.png)](	http://www.prine.ch/img/RubyResizeImages.png)

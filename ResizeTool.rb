@@ -21,15 +21,13 @@ class ResizeTool
     
     @amount_images_drawn = 0
     @amount_images_total = 0
-       
-    # Count files
-    Dir.new(@input_folder).entries.each do |file|
-      if ACCEPTED_EXTENSIONS.include?(File.extname(file).downcase)
-        @amount_images_total += 1
-      end
-      GC.start
-    end
-    
+  end
+  
+  #
+  # Check if the folders does exists if not create them. 
+  # Additionally counts the amount of files.
+  #
+  def precheck
     
     # check if the inputfolder does exists
     unless File.exists?(@input_folder)
@@ -39,6 +37,14 @@ class ResizeTool
     # check if the outputfolder does exists
     unless File.exists?(@output_folder)
       Dir.mkdir(@output_folder)
+    end
+    
+    # Count files
+    Dir.new(@input_folder).entries.each do |file|
+      if ACCEPTED_EXTENSIONS.include?(File.extname(file).downcase)
+        @amount_images_total += 1
+      end
+      GC.start
     end
   end
   
@@ -88,8 +94,9 @@ class ResizeTool
   #
   # Resize with percent
   #
-  def resize_percent(percent, texton = "false")
-    @percent = percent
+  def resize_percent(percent) 
+    
+    precheck()
     
     resize_percent = Proc.new do |file|
       
@@ -97,32 +104,33 @@ class ResizeTool
       output_filepath = @output_folder + "/resized_" + file
       
       image = MiniMagick::Image.open(input_filepath)
-      image.scale "#{@percent.to_f}%"
+      image.scale "#{percent.to_f}%"
       image.write(output_filepath)
       
       GC.start
     end  
     
     read_directory(@input_folder, resize_percent)
-    
-    resize_percent = nil
   end
   
   #
-  # Resize with width and height
+  # Resize with given dimensions
   #
-  def resize_width_height(width, height, watersign_text)
-    @width = width
-    @height = height
+  def resize_with_dimensions(dimensions)
     
-    resize_width_height = Proc.new do |file|
-      image = ImageList.new(file).resize(@width.to_i, @height.to_i)
+    precheck()
+    
+    resize_with_dimensions = Proc.new do |file|
       
-      image.write(@output_folder + "/resized_" + file)
-      puts "Image: " + file + " successfully resized!"
+      input_filepath = @input_folder + "/" + file
+      output_filepath = @output_folder + "/resized_" + file
+      
+      image = MiniMagick::Image.open(input_filepath)
+      image.resize "#{dimensions}"
+      image.write(output_filepath)
     end
     
-    read_directory(@input_folder, resize_width_height)
+    read_directory(@input_folder, resize_with_dimensions)
   end
 
   #
@@ -135,7 +143,7 @@ class ResizeTool
   #
   # Set the output folder
   #
-  def set_output_folder
+  def set_output_folder(output_folder)    
     @output_folder = output_folder
   end
 end
