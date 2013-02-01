@@ -10,7 +10,7 @@ opts = OptionParser.new do |o|
   o.separator("Provides functionality to resize images in different way.")
   o.separator("")
   o.separator("Standard values:")
-  o.separator("Inputfolder: '.' (current directory)")
+  o.separator("Inputfolder: 'images'")
   o.separator("Outputfolder: 'resized'")
   o.separator("")
 
@@ -34,7 +34,7 @@ opts = OptionParser.new do |o|
     puts o.ver
     puts "Written by Robin Oster"
     puts ""
-    puts "Copyright (C) 2013 University of Applied Sciences Northwestern Switzerland"
+    puts "Copyright (C) 2013 prine development - prine.ch"
     exit
   end
   
