@@ -1,7 +1,14 @@
 RubyResizeImages:
 -----------------
 
-With this small Script it is possible to resize all images from a given folder:
+With this small Script it is possible to resize all images from a given folder. 
+As default it takes the images from a directory named "images". All the resized
+images are going to be store in the directory named "resized". It does show
+a progress bar in the terminal itself.
+
+-----------------
+
+[![](	http://www.prine.ch/img/RubyResizeImages.png)](	http://www.prine.ch/img/RubyResizeImages.png)
 
 -----------------
 
