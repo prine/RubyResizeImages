@@ -2,7 +2,7 @@
 -----------------
 
 ##Description
--
+---
 
 With this small Script it is possible to resize all images from a given folder. 
 As default it takes the images from a directory named "images". All the resized
@@ -15,7 +15,7 @@ Currently there are two different ways to resize the images:
 
 
 ##Example
--
+---
 
 As example resize all images to 50%:
 
@@ -40,7 +40,7 @@ Input or output directory can be changed with the following argument:
 It is using the gem package "mini_magick" to resize the images. ImageMagick is also needed.
 
 So first install the ImageMagick:
--
+---
 ###Port - ImageMagick
 	sudo port install ImageMagick
 	
@@ -50,7 +50,7 @@ So first install the ImageMagick:
 ###Installer - ImageMagick
 http://cactuslab.com/imagemagick/
 
--
+---
 
 ###Gem - mini_magick
 The other required package "mini_magick" can be installed with the following command.
