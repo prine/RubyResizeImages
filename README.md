@@ -55,6 +55,7 @@ http://cactuslab.com/imagemagick/
 
 ##Gem - mini_magick
 The other required package "mini_magick" can be installed with the following command.
+
 	sudo gem install mini_magick
 
 
