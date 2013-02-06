@@ -6,7 +6,7 @@
 
 With this small Script it is possible to resize all images from a given folder. 
 As default it takes the images from a directory named "images". All the resized
-images are going to be store in the directory named "resized". It does show
+images are going to be stored in the directory named "resized". It does show
 a progress bar in the terminal itself.
 
 Currently there are two different ways to resize the images:
@@ -21,7 +21,7 @@ As example resize all images to 50%:
 
 	ruby resize.rb -p 50	
 	
-Or if you want to resize by dimensions. It fits either on the width or on the height to the given pixel dimension. (Example: 500x500px):
+Or if you want to resize by dimensions. It either fits on the width or on the height to the given pixel dimension. (Example: 500x500px):
 	
 	ruby resize.rb -d 500x500
 
